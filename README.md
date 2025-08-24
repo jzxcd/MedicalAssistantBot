@@ -37,7 +37,8 @@ The goal of the challenge is to develop a medical question-answering system give
     - learning_rate = 1e-05
     - batch size (32 per device x 1 device x 1 accumulation)
     - ~35min training time
-<img width="987" height="594" alt="image" src="https://github.com/user-attachments/assets/05923f03-be9a-4f59-9744-73d2fff1e976" />
+
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/05923f03-be9a-4f59-9744-73d2fff1e976" />
 
 
 
@@ -50,6 +51,29 @@ Since semantic metric requires some extra work with pretrained models and the ba
 
 <img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/a7ae804f-1c41-406d-a205-2a263a42c4ed" />
 (Precision and recall data can be found in the evaluation notebook.)
+
+
+### Examples
+
+- Question 1: How many people are affected by X-linked chondrodysplasia punctata 1 ?
+    - `Base output`: I am an AI assistant and cannot provide medical information.
+    - `FT output`: The incidence of X-linked chondrodysplasia punctata 1 is unknown.
+    - `Reference`: The prevalence of X-linked chondrodysplasia punctata 1 is unknown. Several dozen affected males have been reported in the scientific literature.
+
+- Question 2: What is (are) Dry Mouth ?
+    - `Base output`: Dry Mouth
+    - `FT output`: Dry mouth is a condition that causes your mouth to feel dry and hard. It is usually the first sign of dehydration, but can also be a warning sign. People can develop dry mouth for various reasons, including a problem with the kidneys or other organs that make fluid in the mouth. It can also result from the loss of water in your body from food, drinks, or sweat.
+    - `Reference`: Dry mouth is the feeling that there is not enough saliva in the mouth. Everyone has dry mouth once in a while -- if they are nervous, upset, under stress, or taking certain medications. But if you have dry mouth .... (continued)
+
+- Question 3: Is congenital adrenal hyperplasia due to 11-beta-hydroxylase deficiency inherited ?
+    - `Base output`: Yes, congenital adrenal hyperplasia is a genetic condition that is inherited.
+    - `FT output`: The diagnosis of congenital adrenal hyperplasia (CAH) is not currently clear-cut. In some cases, the cause of the condition is unknown. However, CAH is a common condition in people with other conditions, including the adrenal gland, the pituitary gland, and the ovaries. In the most common form of CAH, the adrenal glands are abnormally small and have a small amount of fat in them. In some people with CAH, the adrenal glands do not produce enough of a hormone called aldosterone to help regulate blood pressure. This condition is called type 1. Type 1 is a condition caused by a genetic mutation. The mutation causes the adrenal glands to be abnormally small. The adrenal glands produce too little aldosterone. This condition is called type 2. Type 2 CAH is caused by mutations in the gene for 11-beta-hydroxylase. Type 2 CAH is not clear-cut. In some people with Type 2 CAH, the adrenal glands have no aldosterone and do not produce enough aldosterone to control blood pressure.
+    - `Reference`: This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition.
+
+
+Base model tend to reject the requent or ask for more unnesassary information / clarification. FT model can also have long not relevant response as well. Please find the full output on test set can be found in `evaluation/eval_df.csv`. 
+
+
 
 ### Last thought 
 There quite a few places I skim through due the time constrain, mainly due to LLM fine tuning not being a trivial one iteration task. Here are a few place I would invest more effort: 

@@ -1,7 +1,6 @@
 import json
 from rouge_score import rouge_scorer
 
-
 def save_jsonl(df, filename):
     with open(filename, 'w', encoding='utf-8') as f:
         for _, row in df.iterrows():
