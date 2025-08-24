@@ -33,12 +33,12 @@ The goal of the challenge is to develop a medical question-answering system give
 2. Full parameter tuning (268m in 8-bit)
     - Tried LoRA (r=alpha=128) but the performance is not ideal
 4. Trainin setup highlight:
-    - 1 epoch (1,752 steps)
+    - 4 epoch (1,752 steps)
     - learning_rate = 1e-05
     - batch size (32 per device x 1 device x 1 accumulation)
     - ~35min training time
+<img width="987" height="594" alt="image" src="https://github.com/user-attachments/assets/05923f03-be9a-4f59-9744-73d2fff1e976" />
 
-# add training log here
 
 
 ### Evaluation
@@ -46,9 +46,10 @@ Medical related answers evaluation focuses on factuality and coverage (therefore
 - `Token or N-grame based`: to compare common token or N-gram between generated output to reference. 
 - `Sementic based` - distance based scoring on semantics which can capture the paraphrases that N-gram based metrics. Typical ones are cosine similarity on embeddings or pretrained BERT models which have specialized heads on NLU tasks like contradictary, paraphrasing, and relevance. 
 
-Since semantic metric requires some extra work with pretrained models and the base gemma3 performed quite poorly, I used only ROUGE-Lsum to show the improvement of the fine tuned model. ROUGE-Lsum is similar to N-gram but checks the longest common subsequence rather than fixed terms. Here is the result from the 1000 test samples
+Since semantic metric requires some extra work with pretrained models and the base gemma3 performed quite poorly, I used only ROUGE-Lsum to show the improvement of the fine tuned model. ROUGE-Lsum is similar to N-gram but checks the longest common subsequence rather than fixed terms. Here is the f_Score result from the 1000 test samples.
 
-
+<img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/a7ae804f-1c41-406d-a205-2a263a42c4ed" />
+(Precision and recall data can be found in the evaluation notebook.)
 
 ### Last thought 
 There quite a few places I skim through due the time constrain, mainly due to LLM fine tuning not being a trivial one iteration task. Here are a few place I would invest more effort: 
