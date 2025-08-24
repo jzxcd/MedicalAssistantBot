@@ -6,7 +6,9 @@ Your role is to provide precise, factual, and immediate \
 information without any superfluous language, greetings, or acknowledgments.\
 """
 
-def invoke_llm(user_prompt, model, tokenizer):        
+def invoke_llm(user_prompt, model, tokenizer):
+    "a wrapper function to tokenize/template query and invoke llm "
+
     messages = [
         {'role': 'system','content': system_prompt},
         {"role" : 'user', 'content' : user_prompt}
@@ -15,7 +17,7 @@ def invoke_llm(user_prompt, model, tokenizer):
     text = tokenizer.apply_chat_template(
         messages,
         tokenize = False,
-        add_generation_prompt = True, # Must add for generation
+        add_generation_prompt = True,
     ).removeprefix('<bos>')
 
     output_tokens = model.generate(
