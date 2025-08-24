@@ -50,10 +50,12 @@ Medical related answers evaluation focuses on factuality and coverage (therefore
 Since semantic metric requires some extra work with pretrained models and the base gemma3 performed quite poorly, I used only ROUGE-Lsum to show the improvement of the fine tuned model. ROUGE-Lsum is similar to N-gram but checks the longest common subsequence rather than fixed terms. Here is the f_Score result from the 1000 test samples.
 
 <img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/a7ae804f-1c41-406d-a205-2a263a42c4ed" />
-(Precision and recall data can be found in the evaluation notebook.)
+
+(Precision and recall data can be found in the evaluation notebook)
 
 
 ### Examples
+`evaluation/eval_df.csv`
 
 - Question 1: How many people are affected by X-linked chondrodysplasia punctata 1 ?
     - `Base output`: I am an AI assistant and cannot provide medical information.
@@ -71,7 +73,7 @@ Since semantic metric requires some extra work with pretrained models and the ba
     - `Reference`: This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition.
 
 
-Base model tend to reject the requent or ask for more unnesassary information / clarification. FT model can also have long not relevant response as well. Please find the full output on test set can be found in `evaluation/eval_df.csv`. 
+The current model does alot better on actually generating contentful result comparing to base model which rejects a lot. On the other hand, fine tuned model has flaws on generating long irrelavent answers. This explains the model improve F score mainly thru recall and less from precision. Please find the full output of the testset in `evaluation/eval_df.csv`. 
 
 
 
