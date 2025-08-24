@@ -1,3 +1,10 @@
+# project specific
+/data
+/saved_models
+/wandb
+/unsloth_compiled_cache
+/outputs
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
